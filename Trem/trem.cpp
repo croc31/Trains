@@ -56,6 +56,7 @@ void Trem::run(){
                    direita();
                 }
                 deadlock[3]->acquire();
+                std::cout << "trem 1 pega deadlock: " << deadlock[3]->available() << std::endl;
                 deadlock[2]->acquire();
                 critic0.lock();
                 while (x<410){//entrando no ponto crítico 0
@@ -101,7 +102,9 @@ void Trem::run(){
                 critic1.unlock();
                 if(deadlock[0]->available() <2)
                     deadlock[0]->release();
-                deadlock[3]->release();
+                if(deadlock[3]->available() <2)
+                    deadlock[3]->release();
+                std::cout << "trem 1 solta deadlock: " << deadlock[3]->available() << std::endl;
                 while (y > yinicio) {
                     if(!isStopped){
                         y-=10;
@@ -121,6 +124,7 @@ void Trem::run(){
                   deadlock[2]->release();
               if(deadlock[3]->available()<2)//se não for a primeira execução
                   deadlock[3]->release();
+              std::cout << "trem 2 solta deadlock: " << deadlock[3]->available() << std::endl;
 
 
               while (x < 680){//
@@ -134,6 +138,7 @@ void Trem::run(){
                   desce();
               }
               deadlock[3]->acquire();
+              std::cout << "trem 2 pega deadlock: " << deadlock[3]->available() << std::endl;
               deadlock[1]->acquire();
               critic4.lock();
               while (y < 150){ //entrando no ponto critico 4
@@ -263,9 +268,12 @@ void Trem::run(){
                 deadlock[1]->release();
               if(deadlock[3]->available() <2)
                 deadlock[3]->release();
+              std::cout << "trem 4 solta solta: " << deadlock[3]->available() << std::endl;
               while(x > 290){
                   esquerda();
               }
+              deadlock[3]->acquire();
+              std::cout << "trem 4 pega deadlock: " << deadlock[3]->available() << std::endl;
               deadlock[0]->acquire();
               critic5.lock();
               while (x > 270) {//entrando no ponto critico 5
@@ -276,7 +284,7 @@ void Trem::run(){
               while (y > 170) {//andando no ponto critico 5
                   sobe();
               }
-              deadlock[3]->acquire();
+
               deadlock[2]->acquire();
               critic2.lock();
               while (y > yinicio) {//entrando no ponto critico 2
