@@ -2,8 +2,8 @@
 #define TREM_H
 
 #include <QThread>
-
-
+#include <QMutex>
+#include <QSemaphore>
 /*
  * Classe Trem herda QThread
  * Classe Trem passa a ser uma thread.
@@ -15,7 +15,7 @@ class Trem: public QThread{
  Q_OBJECT
 public:
     Trem(int,int,int);  //construtor
-    Trem(int,int,int, int);  //construtor
+    Trem(int,int,int,int);  //construtor
     Trem();
     void run();         //função a ser executada pela thread
     void changeVelocity(int);
@@ -33,6 +33,11 @@ private:
    int ID;          //ID do trem
    int velocidade;  //Velocidade. É o tempo de dormir em milisegundos entre a mudança de posição do trem
    bool isStopped; //identifica se o trem está parado
+   bool primeira;
+   void sobe();
+   void desce();
+   void direita();
+   void esquerda();
 };
 
 #endif // TREM_H
