@@ -19,16 +19,15 @@ public:
 
 
 public slots:
-    void updateInterface(int, int, int);
-    void updateText(int, int, int);
+    void updateInterface(int, int, int);//função que atualiza a posição dos trens
 private slots:
     void inicio();
 
-    void on_Slider_1_valueChanged(int value);
-    void on_Slider_2_valueChanged(int value);
-    void on_Slider_3_valueChanged(int value);
-    void on_Slider_4_valueChanged(int value);
-    void on_Slider_5_valueChanged(int value);
+    void on_Slider_1_valueChanged(int value);//função que recebe o valor do slider 1
+    void on_Slider_2_valueChanged(int value);//função que recebe o valor do slider 2
+    void on_Slider_3_valueChanged(int value);//função que recebe o valor do slider 3
+    void on_Slider_4_valueChanged(int value);//função que recebe o valor do slider 4
+    void on_Slider_5_valueChanged(int value);//função que recebe o valor do slider 5
 
 
 private:

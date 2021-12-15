@@ -11,11 +11,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Cria o trem com seu (ID, posição X, posição Y)
 
-    trem1 = new Trem(1,140,30);
-    trem2 = new Trem(2,410,30);
-    trem3 = new Trem(3,0,150);
-    trem4 = new Trem(4,270,150);
-    trem5 = new Trem(5,540,150);
+    trem1 = new Trem(1, 140, 30);
+    trem2 = new Trem(2, 410, 30, 680, 30);
+    trem3 = new Trem(3, 0, 150, 0, 180);
+    trem4 = new Trem(4, 270, 150, 400, 270);
+    trem5 = new Trem(5, 540, 150, 710, 270);
 
 
     /*
@@ -78,23 +78,30 @@ void MainWindow::inicio()
 
 void MainWindow::on_Slider_1_valueChanged(int value)
 {
-    trem1->changeVelocity(value);
+    //mudando a velocidade do trem 1
+    trem1->mudaVelocidade(value);
 }
 
 void MainWindow::on_Slider_2_valueChanged(int value)
 {
-    trem2->changeVelocity(value);
+    //mudando a velocidade do trem 2
+    trem2->mudaVelocidade(value);
 }
+
 void MainWindow::on_Slider_3_valueChanged(int value)
 {
-    trem3->changeVelocity(value);
+    //mudando a velocidade do trem 3
+    trem3->mudaVelocidade(value);
 }
+
 void MainWindow::on_Slider_4_valueChanged(int value)
 {
-    trem4->changeVelocity(value);
+    //mudando a velocidade do trem 4
+    trem4->mudaVelocidade(value);
 }
 
 void MainWindow::on_Slider_5_valueChanged(int value)
 {
-    trem5->changeVelocity(value);
+    //mudando a velocidade do trem 5
+    trem5->mudaVelocidade(value);
 }
